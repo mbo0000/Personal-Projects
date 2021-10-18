@@ -1,0 +1,2 @@
+# Text Analysis with NLP
+Using NLP(NLTK) package to analyze tools required by potential employers for entry level data analyst positions. Data are scrapped and cleaned in the PythonWebScraping project. 
