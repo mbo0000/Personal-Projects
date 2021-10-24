@@ -6,7 +6,7 @@ Each project will touch on a single unique task and produce tangible results fro
 
 ### Projects:
 * __Python Webscraping:__ scraping a small sample set using selenium package for entry level data analyst job posting in the San Francisco Bay area.
-* (WIP)__Text Analysis:__  using NLP(NLTK) package for collecting data of top tools required by potential employers using dataset from the Python Webscraping project. 
+* __Text Analysis:__  using NLP(NLTK) package for collecting data of top tools required by potential employers using dataset from the Python Webscraping project. 
 * (WIP) __Data Visualization:__ exporting dataset from Python Webscraping and Text Analysis projects into Tableau for a visualization dashboard. 
 * __Python Webscraping:__ scraping a small sample set using selenium package for entry level data analyst job posting in the San Francisco Bay Area region.
 * (WIP)__Text Analysis:__  using NLP(NLTK) package for highlighting top tool + skill and experience required by potential employers using data from the Python Webscraping project. 
