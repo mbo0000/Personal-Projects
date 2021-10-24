@@ -1,5 +1,5 @@
 # Python Web Scrapping
-Using selenium, this project aims to scrape entry level data analyst jobs in the San Francisco Bay Area region. 
+Using selenium, this project aims to scrape entry level data analyst jobs in the San Francisco Bay Area region. Scopes defined below are aim to answer 1 question: what are the top asked tools and skills SF Bay Area employers expecting of an entry level data analyst?
 
 ### Scopes:
 * Primary site/platform: Linkedin.
