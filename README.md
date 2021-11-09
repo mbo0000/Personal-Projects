@@ -7,6 +7,6 @@ Each project will touch on a single unique task and produce tangible results fro
 ### Projects:
 * __Python Webscraping:__ scraping a small sample set using selenium package for entry level data analyst job posting in the San Francisco Bay area.
 * __Text Analysis:__  using NLP(NLTK) package for collecting data of top tools required by potential employers using dataset from the Python Webscraping project. 
-* (WIP) __Data Visualization:__ exporting dataset from Python Webscraping and Text Analysis projects into Tableau for a visualization dashboard. 
-* (WIP) __EDA in Postgres:__ perform EDA on a group of dataset in Postgres using only SQL.    
+* (WIP) __Data Visualization:__ . 
+* (WIP) __SQL in BigQuery:__ perform a quick EDA using Stackoverflow public dataset in BigQuery.    
 * (WIP) __Automating Attendance Swap Request:__ using GSuite and Google App Script to create a simple attendance swap approval process. 
