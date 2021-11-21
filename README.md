@@ -9,4 +9,4 @@ Each project will touch on a single unique task and produce tangible results fro
 * __Text Analysis:__  using NLP(NLTK) package for collecting data of top tools required by potential employers using dataset from the Python Webscraping project. 
 * (WIP) __Data Visualization:__ . 
 * (WIP) __SQL in BigQuery:__ perform a quick EDA using Stackoverflow public dataset in BigQuery.    
-* (WIP) __Automating Attendance Swap Request:__ using GSuite and Google App Script to create a simple attendance swap approval process. 
+* (WIP) __API + GAS:__ 
