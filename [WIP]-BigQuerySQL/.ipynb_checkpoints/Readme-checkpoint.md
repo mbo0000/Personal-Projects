@@ -1,5 +1,5 @@
 # SQL in BigQuery
-Leveraging BigQuery API, this project aims to look at the population of users based on badge classes structure and rentention rate of those classes users. 
+Leveraging BigQuery API and Python visual library, this project aims to look at the population of users based on badge classes structure and rentention rate of users by their class. 
 
 ### Scope:
 * Tools:
@@ -9,7 +9,8 @@ Leveraging BigQuery API, this project aims to look at the population of users ba
 ### Content:
 * __bq_stackoverflow__: Jupyter notebook for python script. 
 
-### Exploratory Data Analysis: 
+### Exploring the Data:
+Topics deep dive: 
 - What are the total count for gold badges given and the overal %?
 - Which gold badges are the most popular?
 - Ranking by tenure(year joined), how many users earned gold badges based on the year joined?
