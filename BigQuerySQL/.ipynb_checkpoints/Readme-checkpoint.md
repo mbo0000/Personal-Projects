@@ -1,10 +1,10 @@
 # SQL in BigQuery
-Leveraging BigQuery API and Python visual library, this project aims to look at the population of users based on badge classes structure and rentention rate of users by their class. 
+Leveraging BigQuery API and Python libraries, this project aims to look at the population of users based on badge classes structure and rentention rate of users by their class. 
 
 ### Scope:
 * Tools:
-* * BigQuery API.
-* * Python in Jupyter Notebook environment to make request.
+    * BigQuery API.
+    * Python in Jupyter Notebook environment to make request.
 
 ### Content:
 * __bq_stackoverflow__: Jupyter notebook for python script. 
