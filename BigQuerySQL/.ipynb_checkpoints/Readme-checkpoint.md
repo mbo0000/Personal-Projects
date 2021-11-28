@@ -15,3 +15,4 @@ Topics deep dive:
 - Which gold badges are the most popular?
 - Ranking by tenure(year joined), how many users earned gold badges based on the year joined?
 - Rentention rate between gold badge users vs general population in 2020.
+- Correlation between number of badges earned with user reputation and tenure. 
