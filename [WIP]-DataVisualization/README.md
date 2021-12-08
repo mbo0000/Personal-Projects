@@ -1,6 +1,0 @@
-# Data Visualization
-
-### Scope:
-
-
-### Content:
