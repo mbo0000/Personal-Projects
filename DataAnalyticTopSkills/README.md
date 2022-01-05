@@ -29,12 +29,12 @@ Using the NLP module, each job description was filtered and categorized if match
 
 ![chart](https://github.com/mbo0000/Portfolio/blob/main/DataAnalyticTopSkills/charts/top_tools?raw=true)
 
-SQL appears on ~56% of the total 300+ job posts with Excel and Tableau in the high 40s%.
+SQL appears on ~56% of the total 300+ job posts with Excel and Tableau in the high 40s% and mid 30s%.
 
 ### Conclusion
 No surprises here in Silicon Valley. The top skills are SQL, Excel(or spreadsheet), and Tableau respectively. The 4th place is Python. 
 
-For newly college graduates and beginners, these should be the top skills to master before applying for any entry-level data analyst job.
+For newly college graduates and beginners, these should be the top skills to focus on when applying for any entry-level data analyst job.
 
 ## NOTE:
 Data scraped from Linkedin was performed in early October - 2021. The scraping process may no longer be applicable with the platform updates. 
