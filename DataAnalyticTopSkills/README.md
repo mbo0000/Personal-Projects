@@ -5,7 +5,7 @@ As a person who is not in the industry and have a limited knowledge of the data 
 
 ## Project Tasks
 - __Part 1__ is to gather a small data sample from a job posting site(we will focus on Linkedin). 
-- __Part 2__ is to filter each job description and categorize a list of asked skills for the final analysis.
+- __Part 2__ is to filter each job description and categorize a list of asked skills for the final analysis. Skills will be rank based on how often they appear on a job posting. 
 
 ## Scope
 - __Location:__ Since I am based out of SF Bay Area, I would like to target the jobs specified to the region in my search query. 
@@ -28,6 +28,8 @@ The dataset contains 300+ postings in 2 separates .csv files: _jobs_ and _jobs_d
 Using the NLP module, each job description was filtered and categorized if matches skills in a predefined list. Skills are categorized by the cumulative sum of how many times they appeared on all the scraped job postings. Below is the chart for the top asked skill from the dataset. 
 
 ![chart](https://github.com/mbo0000/Portfolio/blob/main/DataAnalyticTopSkills/charts/top_tools?raw=true)
+
+SQL appears on ~56% of the total 300+ job posts with Excel and Tableau in the high 40s%.
 
 ### Conclusion
 No surprises here in Silicon Valley. The top skills are SQL, Excel(or spreadsheet), and Tableau respectively. The 4th place is Python. 
