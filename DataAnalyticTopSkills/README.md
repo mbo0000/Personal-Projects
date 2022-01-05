@@ -22,10 +22,34 @@ As a person who is not in the industry and have a limited knowledge of the data 
 ### Scrapping with Selenium
 Selenium was chosen due to its various kits and testing features. It came in quite handy when dealing with reloading and initiating the "Show More" button on the Linkedin site. 
 
-The dataset contains 300+ postings in 2 separates .csv files: _jobs_ and _jobs_desc_. This separation was mainly done due to personal preference. 
+The dataset contains 300+ postings in 2 separates .csv files: _jobs_ and _jobs_desc_. This separation was mainly done due to personal preference. The target observations are the job's id, title, its company name, location, and the description. Filters applied in the search query url. 
+
+Once job completed, the data will be processed into .csv files: _filtered_job_ and _filtered_job_desc_. This will enable an efficient analysis approach for part 2 of the project. 
 
 ### Job Desc Analysis with NLP Module
-Using the NLP module, each job description was filtered and categorized if matches skills in a predefined list. Skills are categorized by the cumulative sum of how many times they appeared on all the scraped job postings. Below is the chart for the top asked skill from the dataset. 
+Using the NLP module, each job description was filtered and categorized if matches skills in a predefined list. Skills are categorized by the cumulative sum of how many times they appeared on all the scraped job postings. After much time searching on the web, the list below included all the most common skills found:
+- `tool_skill = ['server',
+              'cloud',
+              'sql',
+              'mysql',
+              'python',
+              'r',
+              'tableau',
+              'power bi',
+              'looker',
+              'powerpoint',
+              'sheet',
+              'gsuite',
+              'jupyter',
+              'javascript',
+              'java',
+              'excel',
+              'statistic',
+              'model',
+              'word',
+              'bi']`
+
+Below is the result for the top asked skill from the dataset. 
 
 ![chart](https://github.com/mbo0000/Portfolio/blob/main/DataAnalyticTopSkills/charts/top_tools?raw=true)
 
