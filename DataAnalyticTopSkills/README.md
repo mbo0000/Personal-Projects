@@ -27,7 +27,7 @@ The dataset contains 300+ postings in 2 separates .csv files: _jobs_ and _jobs_d
 ### Job Desc Analysis with NLP Module
 Using the NLP module, each job description was filtered and categorized if matches skills in a predefined list. Skills are categorized by the cumulative sum of how many times they appeared on all the scraped job postings. Below is the chart for the top asked skill from the dataset. 
 
-![chart]()
+![chart](https://github.com/mbo0000/Portfolio/blob/main/DataAnalyticTopSkills/charts/top_tools?raw=true)
 
 ### Conclusion
 No surprises here in Silicon Valley. The top skills are SQL, Excel(or spreadsheet), and Tableau respectively. The 4th place is Python. 
