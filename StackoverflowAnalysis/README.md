@@ -31,7 +31,7 @@ Users trends and behaviors
 ### Users Growth
 Since the launch in late 2008, on average, the platform gained ~1,109,925 of new users annually. The current overall population is 15,534,618 users. We can see the overall population growth is trending positively year after year, with a big uptick in 2020. 
 
-![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/user_signup?raw=true)
+![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/user_signup.png)
 
 However, the population growth alone does not adequately provide information on the platform's performance. For that, we have to look to the DAU/MAU ratio or product "stickiness". DAU is the Daily Active Users(DAU) and MAU is the Monthly Active Users(MAU) metrics.
 
@@ -40,7 +40,7 @@ Product "stickiness" is defined by how often users engage with a product - [geck
 
 The estimated population mean of the DAU/MAU ratio is calculated by the sum of (all observed DAU/MAU)/size of observation. The result is equal to 8.74% with a 95% confidence interval of ~8.64% and ~8.83%. This is a low ratio compared to the industry standard of 20%. Let plot all data points for better visualization of the DAU/MAU ratio trend. 
 
-![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/dau_mau_ratio?raw=true)
+![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/dau_mau_ratio.png)
 
 We can easily see the negative trend of DAU/MAU ratio overall. Notice, there are a few outliers of 100% ratio and mid to high 30s. Those data points did not impact the final result or have a large enough difference to be significant. However, it is interesting to see the context behind these outliers. 
 
@@ -51,7 +51,7 @@ To know what topic/s users are interested in, understanding topic/s asked by the
 
 Below are the top 10 topics asked by the community with Javascript, Java, and Python leading the chart respectively. 
 
-![](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/top_10_topics?raw=true)
+![](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/top_10_topics.png)
 
 Javascript is a programming language that shines on both client-side and server-side for web development. With the top 10 included Javascript, html, php and css, the assumption is many of the users on the platform are web developers. Would be an interesting hypothesis to test on a different project. 
 
@@ -60,8 +60,8 @@ Javascript is a programming language that shines on both client-side and server-
 __Problem:__ Stack Overflow has a positive users growth rate averaging ~7.68% annually. However, its average "stickiness" factor is hovering at ~8.74% overall. This falls short of the industry standard of 20%. 
 
 __Recommendation__: While Stack Overflow has a ranking or leaderboard, reputation, badges, and among others achievement systems, it can benefit from the additional incentive for users to be more active on the platform. In turn, it will improve the DAU/MAU ratio for a better product value as a whole. 
-- One of the incentives that come to mind is a monthly/quarter/annual tournament that encourages users to meet a challenge. Challenges can be # of questions answered and accepted by the community. With the top most popular topics data, the challenge can target those specific areas or be even broader. Differentiating from the current systems, challenges can be hosted by other companies and orgs that seek out top talents or other cash incentive rewards. Below are the top 3 most popular topics in 2021. 
-    - ![](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/top_3_2021) 
+- One of the incentives that come to mind is a monthly/quarter/annual tournament that encourages users to meet a challenge. Challenges can be # of questions answered and accepted by the community. With the top most popular topics data, the challenge can target those specific areas or be even broader. Differentiating from the current systems, challenges can be hosted by other companies and orgs that seek out top talents or other cash incentive rewards. Challenges can change based on different top trending topics. Below are the top 3 most popular topics in 2021. 
+    - ![](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/top_3_2021.png) 
 
 ## Appendix - A
 __Data Source__ 
