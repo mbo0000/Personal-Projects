@@ -22,9 +22,14 @@ As a person who is not in the industry and have a limited knowledge of the data 
 ### Scrapping with Selenium
 Selenium was chosen due to its various kits and testing features. It came in quite handy when dealing with reloading and initiating the "Show More" button on the Linkedin site. 
 
-The dataset contains 300+ postings in 2 separates .csv files: _jobs_ and _jobs_desc_. This separation was mainly done due to personal preference. The target observations are the job's id, title, its company name, location, and the description. Filters applied in the search query url. 
+The dataset contains 300+ postings in 2 separates .csv files: _jobs_ and _jobs_desc_. This separation was mainly done due to personal preference. The target observations are the job's 
+- id
+- title
+- company name
+- location
+- description. 
 
-Once job completed, the data will be processed into .csv files: _filtered_job_ and _filtered_job_desc_. This will enable an efficient analysis approach for part 2 of the project. 
+Filters for entry-level and location restriction are applied in the search query url. Once job completed, the data will be processed into .csv files: _filtered_job_ and _filtered_job_desc_. This will make processing in part 2 a bit easier.  
 
 ### Job Desc Analysis with NLP Module
 Using the NLP module, each job description was filtered and categorized if matches skills in a predefined list. Skills are categorized by the cumulative sum of how many times they appeared on all the scraped job postings. After much time searching on the web, the list below included all the most common skills found:
@@ -49,7 +54,7 @@ Using the NLP module, each job description was filtered and categorized if match
               'word',
               'bi']`
 
-Below is the result for the top asked skill from the dataset. 
+To summarize, each job description is tokenized and matched against the defined skills list. If a skill is found, it will be added into a separated list to be tally up. Below is the result for the top asked skill from the dataset. 
 
 ![chart](https://github.com/mbo0000/Portfolio/blob/main/DataAnalyticTopSkills/charts/top_tools?raw=true)
 
