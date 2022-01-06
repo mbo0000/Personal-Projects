@@ -60,8 +60,8 @@ Javascript is a programming language that shines on both client-side and server-
 __Problem:__ Stack Overflow has a positive users growth rate averaging ~7.68% annually. However, its average "stickiness" factor is hovering at ~8.74% overall. This falls short of the industry standard of 20%. 
 
 __Recommendation__: While Stack Overflow has a ranking or leaderboard, reputation, badges, and among others achievement systems, it can benefit from the additional incentive for users to be more active on the platform. In turn, it will improve the DAU/MAU ratio for a better product value as a whole. 
-- One of the incentives that come to mind is a monthly/quarter/annual tournament that encourages users to meet a challenge. Challenges can be # of questions answered and accepted by the community. With the top most popular topics data, the challenge can target those specific areas or be even broader. Differentiating from the current systems, challenges can be hosted by other companies and orgs that seek out top talents or other cash incentive rewards. Challenges can change based on different top trending topics. Below are the top 3 most popular topics in 2021. 
-    - ![](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/top_3_2021.png) 
+- One method, widely adopted, is to have a weekly or montly automated emails to low active and inactive users with question posts without an answer or without a community accepted answer. Question posts can be selected, randomly or methodically based on the top trending topics of the month. Below is an example of what are the top 3 topics for each month in 2021. 
+    - ![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/top_3_2021.png) 
 
 ## Appendix - A
 __Data Source__ 
