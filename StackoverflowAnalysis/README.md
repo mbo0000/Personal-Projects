@@ -1,9 +1,9 @@
 # Stack Overflow
 ## Background
-Stack Overflow is an online platform for asking and finding technical questions or answers. It is a community-based space for developers to seek answers and help others on a variety of topics. Since its inception, Stack Overflow has been a preferred platform by the majority of the developers and technologists communities. To promote growth within the platform, we will be using available data and gain additional insight into its current performance. 
+Stack Overflow is an online platform for asking and finding technical questions or answers. It is a community-based space for developers to seek answers and help others on a variety of topics. Since its inception, Stack Overflow has been a preferred platform by the majority of the developers and technologists communities. In this project, I would like to understand its current performance through users growth vs users engagement. 
 
 ## Project Goal
-By identifying some of the platform’s KPIs and metrics, we can better assess its past and current performance. More importantly, this will give insight into the retention rate among its existing/new users and possibly influence marketing strategy/campaign.
+By identifying some of the platform’s KPIs and metrics, we can better assess its past and current performance. More importantly, this will give insight into the retention rate among its existing/new users and possibly influence marketing strategy/campaign if needed be.
 
 ## Target KPIs
 Platform’s current performance through defined metrics.
