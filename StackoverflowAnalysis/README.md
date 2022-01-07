@@ -80,7 +80,7 @@ Javascript is a programming language that shines on both client-side and server-
 __Problem:__ Stack Overflow has a positive users growth rate averaging ~7.68% annually. However, its average "stickiness" factor is hovering at ~8.74% overall. This falls short of the industry standard of 20%. 
 
 __Recommendation__: While Stack Overflow has a ranking or leaderboard, reputation, badges, and among others achievement systems, it can benefit from the additional incentive for users to be more active on the platform. In turn, it will improve the DAU/MAU ratio for a better product value as a whole. 
-- One method, widely adopted, is to have a weekly or montly automated emails to low active and inactive users with question posts without an answer or without a community accepted answer. Question posts can be selected, randomly or methodically based on the top trending topics of the month. Below is an example of what are the top 3 topics for each month in 2021. 
+- One method, widely adopted, is to have a weekly or montly automated emails to low active and inactive users with question posts without an answer or without a community accepted answer. Question posts can be selected, randomly or methodically based on the top trending topics of the month.  We can then look at the DAU and MAU of the low and inactive population. They are good indicators to show if there is any improvement. Below is an example of what are the top 3 topics for each month in 2021.
     - ![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/top_3_2021.png) 
 
 ## Appendix - A
