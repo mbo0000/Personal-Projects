@@ -36,7 +36,8 @@ ORDER BY 1 DESC
 ```
 
 As shown in the graph, the majority of users are active during the weekday and drop off during the weekend consistently. DAU peaks out on Tue-Thur and begins to sharply decline on Sat-Sun. My assumption on this trend would be that our demographic are likely to be college students and working professionals. DAU is also slightly trending positively week after week. 
-![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/dau.png)
+
+![image](https://github.com/mbo0000/Portfolio/blob/wip/StackoverflowAnalysis/charts/dau.png)
 
 Furthermore, cohorts analysis can provide valuable information on our churn rate with with DAU metrics:
 
@@ -67,11 +68,12 @@ SELECT active_date, week_join, COUNT(DISTINCT owner_user_id) AS dau FROM cohort 
 ```
 
 The churn rate for newly signed up users is consistently negative. There is a high drop-off rate for each cohort. The majority of our DAU tend to be more tenure with 5+ weeks who are most likely regular users. This also helps us narrow down our target demographic when selecting a re-engagement group. 
-![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/cohort.png)
+
+![image](https://github.com/mbo0000/Portfolio/blob/wip/StackoverflowAnalysis/charts/cohort.png)
 
 Zoom into users who signed up 4 weeks or less. 
 
-![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/cohort_4weeks.png)
+![image](https://github.com/mbo0000/Portfolio/blob/wip/StackoverflowAnalysis/charts/cohort_4weeks.png)
 
 ## Identifying Metrics
 
@@ -119,7 +121,7 @@ With the sample model above, we can define the target thresholds to determine if
 
 ## Appendix - A:
 __Data Source__ 
-- BigQuery public dataset for Stackoverflow.
+- BigQuery public dataset for Stack Overflow.
 
 __Tools and Technology__:
 - Standard SQL in the BigQuery environment.
