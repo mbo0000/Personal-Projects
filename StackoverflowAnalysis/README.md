@@ -1,88 +1,126 @@
 # Stack Overflow
 ## Background
-Stack Overflow is an online platform for asking and finding technical questions or answers. It is a community-based space for developers to seek answers and help others on a variety of topics. Since its inception, Stack Overflow has been a preferred platform by the majority of the developers and technologists communities. In this project, I would like to understand its current performance through users growth vs users engagement. 
+This project is a hypothetical case study for a marketing campaign in an effort to increase user engagement of Stack Overflow. 
 
-## Project Goal
-By identifying some of the platform’s KPIs and metrics, we can better assess its past and current performance. More importantly, this will give insight into the retention rate among its existing/new users and possibly influence marketing strategy/campaign if needed be.
+## Business Task:
+To increase user engagement, the team at Stack Overflow launched a Re-engagement email campaign. The Senior Leadership Team and Marketing team are requesting a weekly report on the performance of the campaign. Tasks given to the Analytic team are to define the key metrics to measure the campaign success and the method to deliver the metrics. 
 
-## Target KPIs
-Platform’s current performance through defined metrics.
-- DAU/MAU ratio for user engagement.
-- Population growth
 
-Users trends and behaviors
-- What are the most popular topics by month? 
+## Key Stakeholders
+- SLT
+- Marketing
+
+## Project Goals:
+- Identify key metrics to measure campaign progress and method of delivering weekly results.
+- Provide insight or recommendations if any. 
 
 ## Scope
-- Using publicly available data through BigQuery Public.
-- Metrics are confined to public users only. We will exclude enterprises and private organizations as they are not the target audience we are going after nor the data is available. 
-- We will be excluding product technical performance or business metrics as they are not within the goal of the project nor readily available.
-- Data in 2021 and late 2008 are incomplete or missing. Insight on these observations is limited.
-- Measuring __overall__ platform's performance with at-a-glance metrics only and not deep-dive analysis.
+- Using publicly available data through BigQuery Public dataset service.
+- Metrics are confined to public users only. 
+- Data is confined to September of 2019 and before the present time frame in this case study. The time is before the pandemic shutdown of 2020 and 2021. 2019 provides more stable and reliable data to analyze. 
 
-## Tools
-- Standard SQL in the BigQuery environment.
-    - All of our data is hosted on the BigQuery platform.
-    - SQL to handle the size of the dataset.
-- Python in Jupyter Notebook.
-    - Leveraging Python’s libraries(Pandas, Numpy, Matplotlib, etc…) as an all-in-one hub for all project processes. These include data cleaning, processing, visualization, and analysis. 
-    
-## Content
-### Users Growth
-To calculate the users growth, I would like to understand what counts as growth. My definition is new users sign up(created an account) with the platform. We can make a few assumptions with the user table before proceeding:
-1. id field is uniquely generated, i.e unique to each user account.
-2. Since we can not determine if 2 ids belong to the same user with available data, we can assume each observation is a unique user. 
-3. Each observation must have a creation_date. 
+## Understanding DAU and Users Demographic
+Daily Active Users(DAU) is defined by users' activities of logging in to the site, creating a comment or a post. Before digging into the metrics asked above, I would like to see the current DAU metric for the past 30 days. This will provide insight into users' trends and behavior. 
 
-To our result easier to digest, the sum of new users signup will be grouped by the year of creation_date field. 
+```
+-- dau past 30 days
 
-Since the launch in late 2008, on average, the platform gained ~1,109,925 of new users annually. The current overall population is 15,534,618 users. We can see the overall population growth is trending positively year after year, with a big uptick in 2020. 
+SELECT 
+    active_date,
+    COUNT(DISTINCT owner_user_id) AS dau,
+FROM `portfolio-331917.stored_views.active_users`
+WHERE 
+    active_date BETWEEN DATE '2019-09-01' AND DATE '2019-09-30' 
+GROUP BY 1
+ORDER BY 1 DESC 
+```
 
-![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/user_signup.png)
+As shown in the graph, the majority of users are active during the weekday and drop off during the weekend consistently. DAU peaks out on Tue-Thur and begins to sharply decline on Sat-Sun. My assumption on this trend would be that our demographic are likely to be college students and working professionals. DAU is also slightly trending positively week after week. 
+![image]()
 
-However, the population growth alone does not adequately provide information on the platform's performance. For that, we have to look to the DAU/MAU ratio or product "stickiness". DAU is the Daily Active Users(DAU) and MAU is the Monthly Active Users(MAU) metrics.
+Furthermore, cohorts analysis can provide valuable information on our churn rate with with DAU metrics:
 
-### DAU/MAU ratio
-Product "stickiness" is defined by how often users engage with a product - [geckoboard](https://www.geckoboard.com/best-practice/kpi-examples/dau-mau-ratio/). This metric determines how much is the community engages with the platform. It is also a useful metric when comparing the platform's popularity to competitors'. To be consider as active, a user must participated on the platform by post a question, make a comment or anwer a question on a post. 
+```
+-- cohort analysis
+WITH cohort AS
+(
+    SELECT 
+        active_date,
+        owner_user_id,
+        CASE 
+            WHEN DATE_DIFF(DATE '2019-09-30', DATE(creation_date), DAY) BETWEEN 0 AND 7 THEN "1 WEEK"
+            WHEN DATE_DIFF(DATE '2019-09-30', DATE(creation_date), DAY) BETWEEN 8 AND 14 THEN "2 WEEKS"
+            WHEN DATE_DIFF(DATE '2019-09-30', DATE(creation_date), DAY) BETWEEN 15 AND 21 THEN "3 WEEKS"
+            WHEN DATE_DIFF(DATE '2019-09-30', DATE(creation_date), DAY) BETWEEN 22 AND 28 THEN "4 WEEKS"
+            WHEN DATE_DIFF(DATE '2019-09-30', DATE(creation_date), DAY) > 28 THEN "5+ WEEKS"
+        END AS week_join
+    FROM `portfolio-331917.stored_views.active_users` AS a
+        JOIN `bigquery-public-data.stackoverflow.users` AS u 
+        ON a.owner_user_id = u.id
+    WHERE 
+        active_date BETWEEN DATE '2019-09-01' AND  DATE '2019-09-30'
+        AND active_date > DATE(creation_date)
+    ORDER BY 1
+)
+ 
+SELECT active_date, week_join, COUNT(DISTINCT owner_user_id) AS dau FROM cohort GROUP BY 1,2 ORDER BY 1,2 DESC
+```
 
-With that in mind, the 3 tables of interest are __posts_questions__, __comments__, __posts_answers__. Again before proceeding to process the data, we will need to establish a few assumptions:
-1. id field in each table is unique to a post type or comment(though, this is not a fair assumption since I manually checked since I am paranoid sometimes 😂).
-2. Each post or comment must have a creation_date(again, ✔️-d).  
+The churn rate for newly signed up users is consistently negative. There is a high drop-off rate for each cohort. The majority of our DAU tend to be more tenure with 5+ weeks who are most likely regular users. This also helps us narrow down our target demographic when selecting a re-engagement group. 
+![image]()
 
-__Formula__: 
-- DAU = the sum of all users created a post or comment. 
-- MAU = the sum of the DAU grouped by the month and year. 
-- Ratio = DAU/MAU for each date. 
+Zoom into users who signed up 4 weeks or less. 
 
-The estimated population mean of the DAU/MAU ratio is calculated by the sum of (all observed DAU/MAU)/size of observation. The result is equal to 8.74% with a 95% confidence interval of ~8.64% and ~8.83%. This is a low ratio compared to the industry standard of 20%. 
+![image]()
 
-Let plot all data points for better visualization of the DAU/MAU ratio trend. 
+## Identifying Metrics
 
-![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/dau_mau_ratio.png)
+For simplicity, let's assume the product team has existing data from the campaign with an email_sent table. Possible schema for the table:
 
-We can easily see the negative trend of DAU/MAU ratio overall. Notice, there are a few outliers of 100% ratio and mid to high 30s. Those data points did not impact the final result or have a large enough difference to be significant. However, it is interesting to see the context behind these outliers. 
+| field             | type     |
+| ----------------- | -------- |
+| id                | INTEGER  |
+| creation_date     | DATETIME |
+|post_id            | INTEGER  |
+|user_id            | INTEGER  |
+|email_view         | INTEGER  |
+|click_url          | INTEGER  |
+|last_access_date   | DATETIME |
 
-__Note__: Aggregated data does not give us the whole picture of users retention or engagement. Maybe some months, the ratio is higher or lower due to colleges starting/closing. Or a certain period of a day, the platform might have a higher ratio compared to the rest of the day because of office hours. In addition, Cohort analysis can give a greater depth into the users' retention rate. With granularity levels of daily, weekly, monthly, or quarterly periods, we can have a clearer picture of the actual retention rate among new users joined. That is out of scope for this at-a-glance project. But they are great topics for an indept Stack Overflow case study.  
+Revisiting the task from above, SLT and Marketing would like to know whether the email re-engagement campaign is successful. Two of the fastest metrics to determine the campaign performance are email view rate and click rate. View rate will give us a better idea of the portion of our recipients who are likely to open the email. This can help even narrow down our target demographic even further. Click rate is the percentage of recipients who opened the email and clicked on the email URL content.
+- view_rate: those received email and viewed / total recipients.
+- click_rate: out of those open the email, how many click on the content link. 
 
-### Top Trending Topics/Tags by Question Posts
-To know what topic/s users are interested in, understanding topics asked by the majority of the community is a great place to start. This task required splitting the tag field in the __posts_questions__ table and counting the total unique tag from all questions asked.
+Since the data for this portion of the project does not exist, I created a staging dataset to help demonstrate. Data consisted of 30 records in a Google Sheet and uploaded to BigQuery.  DISCLAIMER: The data [here]() are not actual existing data. They are made up and purely for illustrative purposes. 
+ 
+Below is a sample query for retrieving the metrics. 
 
-Build upon the previous rules, we can conclude each observation must have a non-null tag's value; each tag is separated by a single | character between them; each observation has a unique tag in a string of tags. After all observations are split, they will be grouped and counted.
+```
+SELECT 
+    ROUND((SELECT COUNT(id) FROM `portfolio-331917.reengagement_campaign.email_sent` WHERE email_view = 1)/
+        COUNT(id) * 100, 2) AS view_rate,
+    ROUND((SELECT COUNT(id) FROM `portfolio-331917.reengagement_campaign.email_sent` WHERE click_url = 1)/
+        (SELECT COUNT(id) FROM `portfolio-331917.reengagement_campaign.email_sent` WHERE email_view = 1) * 100, 2) AS click_rate
+FROM `portfolio-331917.reengagement_campaign.email_sent`
+```
 
-Below are the top 10 topics asked by the community with Javascript, Java, and Python leading the chart respectively. 
+Sample Output from our dummy data:
 
-![](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/top_10_topics.png)
+| view_rate | click_rate |
+| --------- | ---------- |
+| 60%       | 55.56%     |
 
-Javascript is a programming language that shines on both client-side and server-side for web development. With the top 10 included Javascript, html, php and css, the assumption is many of the users on the platform are web developers. Would be an interesting case to test. Unfortunately, that is also out of scope.  
+## Finding:
+If the initial assumption is correct, our target demographics for the email campaign are most likely college students and working professionals. This is a hypothesis based on the data on the DAU trend. To verify this, maybe we can dig into text analysis of users' data table. DAU during the summer months will be another indicator if the hypothesis is correct. It consistently peaked out from Wednesday to Friday and dipped on Sat to Sunday. The time frame of when to send out email is during these 3 peak days to increase email view chance. 
+ 
+The churn rate among new users is high where the majority of users become inactive after 1 week of signing up. For newly signup users, after 1 week of becoming inactive, they should be added to the target group of email recipients. 
+ 
+With the sample model above, we can define the target thresholds to determine if the campaign is successful on a weekly-by-week basis or overall. 
 
-### Problem and recommendations
-
-__Problem:__ Stack Overflow has a positive users growth rate averaging ~7.68% annually. However, its average "stickiness" factor is hovering at ~8.74% overall. This falls short of the industry standard of 20%. 
-
-__Recommendation__: While Stack Overflow has a ranking or leaderboard, reputation, badges, and among others achievement systems, it can benefit from the additional incentive for users to be more active on the platform. In turn, it will improve the DAU/MAU ratio for a better product value as a whole. 
-- One method, widely adopted, is to have a weekly or montly automated emails to low active and inactive users with question posts without an answer or without a community accepted answer. Question posts can be selected, randomly or methodically based on the top trending topics of the month.  We can then look at the DAU and MAU of the low and inactive population. They are good indicators to show if there is any improvement. Below is an example of what are the top 3 topics for each month in 2021.
-    - ![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/top_3_2021.png) 
-
-## Appendix - A
+## Appendix - A:
 __Data Source__ 
-[BigQuery public dataset for Stack Overflow](https://console.cloud.google.com/marketplace/product/stack-exchange/stack-overflow).
+- BigQuery public dataset for Stackoverflow.
+
+__Tools and Technology__:
+- Standard SQL in the BigQuery environment.
+- Python in Jupyter Notebook.
