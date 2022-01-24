@@ -1,7 +1,7 @@
 # Top Skills Required for an Entry Level Data Analyst
 
 ## Background
-As a person who is not in the industry and have a limited knowledge of the data analytic field, I always curious about what are the top skills required by potential employers for an entry-level job. Blog posts and articles online are often broad and do not provide actual data on how many potential employers ask for a set of specific skills. 
+I always curious about what are the top skills required by potential employers for an entry-level job. Blog posts and articles online are often broad and do not provide actual data on how many potential employers ask for a set of specific skills. 
 
 ## Project Tasks
 - __Part 1__ is to gather a small data sample from a job posting site(we will focus on Linkedin). 
