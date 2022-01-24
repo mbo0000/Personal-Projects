@@ -20,7 +20,49 @@ To increase user engagement, the team at Stack Overflow launched a Re-engagement
 - Data is confined to September of 2019 and before the present time frame in this case study. The time is before the pandemic shutdown of 2020 and 2021. 2019 provides more stable and reliable data to analyze. 
 
 ## Understanding DAU and Users Demographic
-Daily Active Users(DAU) is defined by users' activities of logging in to the site, creating a comment or a post. Before digging into the metrics asked above, I would like to see the current DAU metric for the past 30 days. This will provide insight into users' trends and behavior. 
+Daily Active Users(DAU) is defined by users' activities of logging in to the site, creating a comment or a post. Before digging into the metrics asked above, I would like to see the current DAU metric for the past 30 days. This will provide insight into users' trends and behavior. To do this, a view of union of all 4 tables(users, posts_questions, comments, posts_answers) is needed. 
+
+Run query below and save as View in BQ editor:
+
+```
+SELECT
+    DATE(creation_date) AS active_date,
+    FORMAT_DATE("%a", DATE(creation_date)) AS weekday,
+    owner_user_id,
+    "question" AS activity_type
+FROM `bigquery-public-data.stackoverflow.posts_questions`
+WHERE
+    NOT creation_date IS NULL 
+UNION ALL 
+SELECT
+   DATE(creation_date) AS active_date,
+    FORMAT_DATE("%a", DATE(creation_date)) AS weekday,
+    owner_user_id,
+    "answer" AS activity_type
+FROM `bigquery-public-data.stackoverflow.posts_answers`
+WHERE
+    NOT creation_date IS NULL 
+UNION ALL 
+SELECT
+    DATE(creation_date) AS active_date,
+    FORMAT_DATE("%a", DATE(creation_date)) AS weekday,
+    user_id AS owner_user_id,
+    "comment" AS activity_type
+FROM `bigquery-public-data.stackoverflow.comments`
+WHERE
+    NOT creation_date IS NULL
+UNION ALL 
+SELECT
+   DATE(last_access_date) AS active_date,
+    FORMAT_DATE("%a", DATE(last_access_date)) AS weekday,
+    id AS owner_user_id,
+    "signin" AS activity_type
+FROM `bigquery-public-data.stackoverflow.users`
+WHERE
+    NOT last_access_date IS NULL
+```
+
+I saved my view as _active_users_ in the BQ project. Query below will extract DAU count for the previous 30 days.
 
 ```
 -- dau past 30 days
@@ -66,7 +108,8 @@ WITH cohort AS
 SELECT active_date, week_join, COUNT(DISTINCT owner_user_id) AS dau FROM cohort GROUP BY 1,2 ORDER BY 1,2 DESC
 ```
 
-The churn rate for newly signed up users is consistently negative. There is a high drop-off rate for each cohort. The majority of our DAU tend to be more tenure with 5+ weeks who are most likely regular users. This also helps us narrow down our target demographic when selecting a re-engagement group. 
+The churn rate for newly signed up users is consistently negative. There is a high drop-off rate for each cohort. The majority of our DAU tend to be more tenure with 5+ weeks who are most likely regular users. This also helps us dial in our target demographic when selecting a re-engagement group. 
+
 ![image](https://github.com/mbo0000/Portfolio/blob/main/StackoverflowAnalysis/charts/cohort.png)
 
 Zoom into users who signed up 4 weeks or less. 
@@ -75,7 +118,7 @@ Zoom into users who signed up 4 weeks or less.
 
 ## Identifying Metrics
 
-For simplicity, let's assume the product team has existing data from the campaign with an email_sent table. Possible schema for the table:
+For simplicity, let's assume the product team has existing data from the campaign with an _email_sent_ table. Possible schema for the table:
 
 | field             | type     |
 | ----------------- | -------- |
