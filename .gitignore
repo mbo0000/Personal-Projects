@@ -3,3 +3,9 @@
 
 # vs
 .vs
+
+# ignore all .json files
+*.json
+
+# ignore all .html files
+*.html
